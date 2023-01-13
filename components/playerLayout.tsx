@@ -4,7 +4,15 @@ import Sidebar from "./sidebar";
 const PlayerLayout = ({ children }: any) => {
   return (
     <Box width="100vw" height="100vh">
-      <Box position="absolute" top="0" width="250px" left="0">
+      <Box
+        position="absolute"
+        top="0"
+        width="250px"
+        left="0"
+        height="calc(100vh - 100px)"
+        bg="black"
+        color="gray"
+      >
         <Sidebar />
       </Box>
       <Box marginLeft="250px" marginBottom="100px">
