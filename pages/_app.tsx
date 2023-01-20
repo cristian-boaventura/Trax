@@ -1,5 +1,6 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "reset-css";
+import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import PlayerLayout from "../components/playerLayout";
 
@@ -31,12 +32,22 @@ const theme = extendTheme({
   },
 });
 
-const App = ({ Component, pageProps }: AppProps) => {
+type AppPropsWithAuth = AppProps & {
+  Component: NextPage & {
+    authPage?: boolean;
+  };
+};
+
+const App = ({ Component, pageProps }: AppPropsWithAuth) => {
   return (
     <ChakraProvider theme={theme}>
-      <PlayerLayout>
+      {Component.authPage ? (
         <Component {...pageProps} />
-      </PlayerLayout>
+      ) : (
+        <PlayerLayout>
+          <Component {...pageProps} />
+        </PlayerLayout>
+      )}
     </ChakraProvider>
   );
 };
