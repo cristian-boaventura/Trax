@@ -1,7 +1,12 @@
 import { Box } from "@chakra-ui/layout";
+import { ReactNode } from "react";
 import Sidebar from "./sidebar";
 
-const PlayerLayout = ({ children }: any) => {
+type PlayerLayoutProps = {
+  children: ReactNode;
+};
+
+const PlayerLayout = ({ children }: PlayerLayoutProps) => {
   return (
     <Box width="100vw" height="100vh">
       <Box
